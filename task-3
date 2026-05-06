@@ -1,0 +1,64 @@
+******sphare online judge
+
+  
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static int MAX = 1000000;
+
+    public static void main(String[] args) throws Exception {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        boolean[] reach = new boolean[MAX + 1];
+        boolean[] prime = new boolean[MAX + 1];
+        boolean[] good = new boolean[MAX + 1];
+
+        Arrays.fill(prime, true);
+        prime[0] = prime[1] = false;
+
+        for (int i = 2; i * i <= MAX; i++) {
+            if (prime[i]) {
+                for (int j = i * i; j <= MAX; j += i)
+                    prime[j] = false;
+            }
+        }
+
+        for (int i = 0; i <= MAX; i++) {
+            int m = i + sum(i);
+            if (m <= MAX) reach[m] = true;
+        }
+
+        for (int i = 2; i <= MAX; i++) {
+            if (!reach[i] && prime[i]) good[i] = true;
+        }
+
+        int[] pref = new int[MAX + 1];
+        for (int i = 1; i <= MAX; i++)
+            pref[i] = pref[i - 1] + (good[i] ? 1 : 0);
+
+        int q = Integer.parseInt(br.readLine());
+
+        while (q-- > 0) {
+            String[] s = br.readLine().split(" ");
+            int a = Integer.parseInt(s[0]);
+            int b = Integer.parseInt(s[1]);
+
+            sb.append(pref[b] - (a > 0 ? pref[a - 1] : 0)).append("\n");
+        }
+
+        System.out.print(sb);
+    }
+
+    static int sum(int n) {
+        int s = 0;
+        while (n > 0) {
+            s += n % 10;
+            n /= 10;
+        }
+        return s;
+    }
+}
