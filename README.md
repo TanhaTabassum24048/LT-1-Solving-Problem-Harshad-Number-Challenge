@@ -1,0 +1,1 @@
+# LT-1-Solving-Problem-Harshad-Number-Challenge
