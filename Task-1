@@ -1,11 +1,13 @@
 public class HarshadNum {
+//instance var
     int num ;
     double result;
 
+//constructor
     HarshadNum(int num){
         this.num = num;
     }
-
+//method to print result
     void result(){
         int temp = num;
         int sum = 0;
@@ -25,6 +27,7 @@ public class HarshadNum {
     }
 }
 
+//main class
 public class MainHarshadNum {
     public static void main(String[] ads){
         int num = Integer.parseInt(ads[0]) ;
