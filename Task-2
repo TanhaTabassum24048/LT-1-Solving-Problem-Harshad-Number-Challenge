@@ -1,0 +1,64 @@
+public class Harshad {
+//instance
+    int num ;
+    double result;
+
+//constructor
+    Harshad(int num){
+        this.num = num;
+    }
+
+//method to precess
+    void result(){
+        int temp = num;
+        int sum = 0;
+
+        while(temp > 0){
+            sum += temp % 10;
+            temp/= 10;
+        }
+
+        if(num % sum == 0){
+           System.out.println(sum);
+        }
+
+        else{
+          System.out.println(-1);
+        }
+    }
+}
+
+//main class
+public class MainHarshad {
+    public static void main(String[] ads){
+        int num = Integer.parseInt(ads[0]) ;
+
+        Harshad n = new Harshad(num);
+
+        n.result();
+    }
+    
+}
+
+
+
+
+*****for leetCode
+
+class Solution {
+    public int sumOfTheDigitsOfHarshadNumber(int x) {
+        int temp = x;
+        int sum = 0;
+
+        while (temp > 0) {
+            sum += temp % 10;
+            temp /= 10;
+        }
+
+        if (x % sum == 0) {
+            return sum;
+        } else {
+            return -1;
+        }
+    }
+}
