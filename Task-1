@@ -1,0 +1,37 @@
+public class HarshadNum {
+    int num ;
+    double result;
+
+    HarshadNum(int num){
+        this.num = num;
+    }
+
+    void result(){
+        int temp = num;
+        int sum = 0;
+
+        while(temp > 0){
+            sum += temp % 10;
+            temp /= 10;
+        }
+
+        if(num % sum == 0){
+           System.out.println("YES!!");
+        }
+
+        else{
+           System.out.println("NO!!");
+        }
+    }
+}
+
+public class MainHarshadNum {
+    public static void main(String[] ads){
+        int num = Integer.parseInt(ads[0]) ;
+
+        HarshadNum n = new HarshadNum(num);
+
+        n.result();
+    }
+    
+}
